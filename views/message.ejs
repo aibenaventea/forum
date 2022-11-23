@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Forum</title>
+</head>
+
+<body>
+    <main class="main-container">
+        <h1>The Dojo Message Board</h1>
+        <form action="/message" method="post" >
+            <label for="userName">Name: </label><br>
+            <input type="text" name="userName" minlength="2" maxlength="200"><br>
+            <label for="message">Message: </label><br>
+            <textarea name="message" id="comentario" maxlength="200" cols="40" rows="5" minlength="2"></textarea><br>
+            <button class="btn">Post Message</button>
+        </form>
+
+        <h2><%= message %></h2>
+        <section>
+            <% for (let i in post) { %>
+                <section>
+                    <h3 class="post-message">Name: <%= post[i].userName %></h3>
+                    <h3 class="post-message">Message: <%= post[i].message %> </h3><br>
+                        
+                    <% for (let j in post[i].comment) { %>
+                        <h4 class="comment-message">Name: <%= post[i].comment[j].userName %></h4>
+                        <h4 class="comment-message">Message: <%= post[i].comment[j].message %> </h4><br>
+                        <% } %>
+                    <form action="/postmessage/<%= post[i]._id %>" method="post" >
+                        <label for="userName">Nombre: </label><br>
+                        <input type="text" name="userName" minlength="2" maxlength="200"><br>
+                        <label for="message">Comentario: </label><br>
+                        <textarea name="message" maxlength="200" cols="40" rows="5" minlength="2"></textarea><br>
+                        <button class="btn" type="submit">Post Comment</button><br>
+                    </form>
+                </section>         
+            <% } %>
+        </section>
+    </main>  
+</body>
+</html>
