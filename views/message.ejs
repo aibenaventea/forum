@@ -13,9 +13,9 @@
         <h1>The Dojo Message Board</h1>
         <form action="/message" method="post" >
             <label for="userName">Name: </label><br>
-            <input type="text" name="userName" minlength="2" maxlength="200"><br>
+            <input type="text" name="userName" minlength="3" maxlength="50" required><br>
             <label for="message">Message: </label><br>
-            <textarea name="message" id="comentario" maxlength="200" cols="40" rows="5" minlength="2"></textarea><br>
+            <textarea name="message" id="comentario" cols="40" rows="5" minlength="3" maxlength="250" required></textarea><br>
             <button class="btn">Post Message</button>
         </form>
 
@@ -32,9 +32,9 @@
                         <% } %>
                     <form action="/postmessage/<%= post[i]._id %>" method="post" >
                         <label for="userName">Nombre: </label><br>
-                        <input type="text" name="userName" minlength="2" maxlength="200"><br>
+                        <input type="text" name="userName" minlength="3" maxlength="50" required><br>
                         <label for="message">Comentario: </label><br>
-                        <textarea name="message" maxlength="200" cols="40" rows="5" minlength="2"></textarea><br>
+                        <textarea name="message" cols="40" rows="5" minlength="3" maxlength="250" required></textarea><br>
                         <button class="btn" type="submit">Post Comment</button><br>
                     </form>
                 </section>         

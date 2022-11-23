@@ -24,6 +24,13 @@ const ForumPostSchema = new mongoose.Schema({
 
 const Post = mongoose.model('post', ForumPostSchema);
 
+app.get('/', (req, res) => {
+    Post.find({})
+    .then(post => {
+        res.render('message',{post: post, message: ''});
+    })
+    .catch(error => handleError(error))
+})
 
 app.get('/message', (req, res) => {
     Post.find({})
@@ -32,6 +39,7 @@ app.get('/message', (req, res) => {
     })
     .catch(error => handleError(error))
 })
+
 
 // post principal
 app.post('/message', function(req, res) {
